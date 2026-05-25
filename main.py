@@ -32,7 +32,9 @@ def add_book(books):
     numbers = [1, 2, 3, 4, 5]
     """Добавление новой книги"""
     print("\nДобавление новой книги:")
-    author = input("Введите имя автора: ").strip()
+    author = input("Введите фамилию автора: ").strip()
+    while len(author) > 30:
+        author = input("Введите фамилию автора (фамилия автора должна быть меньше 30 символов): ").strip()
     name = input("Введите назвние книги: ").strip()
     rating = int(input("Введите оценку книги от 1 до 5: ").strip())
     while not rating in numbers:
