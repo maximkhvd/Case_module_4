@@ -56,6 +56,22 @@ def load_books():
 def save_books(books):
     with open(books_json, 'w', encoding='utf-8') as file:
         json.dump(books, file, ensure_ascii=False, indent=2)
+def delete_book(books):
+    """Удаление книги"""
+    if not books:
+        print("\nСписок книг пуст")
+        return None
+    list_books(books)
+    try:
+        book_num = int(input("\nВведите номер книги для удаления: ")) - 1
+        if 0 <= book_num < len(books):
+            deleted_book = books.pop(book_num)
+            save_books(books)
+            print(f"Книга '{deleted_book['name']}' успешно удален!")
+        else:
+            print("Неверный номер книги")
+    except ValueError:
+        print("Пожалуйста, введите корректную книгу")
 
 def main():
     """Главная функция программы"""
