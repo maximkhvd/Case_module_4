@@ -2,6 +2,32 @@ import json
 import os
 books_json = "books.json"
 
+def list_books(books):
+    """Отображение списка книг"""
+    if not books:
+        print("\nКниги не найдены")
+        return None
+    print("-" * 80)
+    for i, book in enumerate(books, 1):
+        print(f"{book['name']:<15}")
+def stats_books(books):
+    if len(books) != 0:
+        count = len(books)
+    sum_rating = 0
+    average = 0
+    for i in range(len(books)):
+        sum_rating += books[i]["rating"]
+    average = (sum_rating/count)
+    print(average)
+def stats_author(books):
+    kolvo = 0
+    author_kolvo = {}
+    for i in range(len(books)):
+        if books[i]["author"] in author_kolvo:
+            author_kolvo[books[i]["author"]] += 1
+        else:
+            author_kolvo[books[i]["author"]] = 1
+    print(author_kolvo)
 def add_book(books):
     numbers = [1, 2, 3, 4, 5]
     """Добавление новой книги"""
